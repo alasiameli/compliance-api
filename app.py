@@ -25,10 +25,12 @@ def create_system_info_event():
 
     file_name = get_destination(destination_path, file_name, file_extension)
 
-    with open(file_name, 'w') as json_file:
-        json.dump(jsonBody, json_file)
-
-    return jsonify({'status': "OK"}), 201
+    try:
+        with open(file_name, 'w') as json_file:
+            json.dump(jsonBody, json_file)
+        return jsonify({'status': "OK"}), 201
+    except Exception as e:
+        return custom_error("File not created", 500)
 
 
 def get_destination(path, file_name, extension):
@@ -37,7 +39,7 @@ def get_destination(path, file_name, extension):
 
 
 def custom_error(message, status_code):
-    return make_response(jsonify(message), status_code)
+    return make_response(jsonify({'status_code': status_code, 'message': message}), status_code)
 
 
 if __name__ == '__main__':
