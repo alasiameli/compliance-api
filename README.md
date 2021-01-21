@@ -45,10 +45,15 @@ NOTA: Se incluyó la hora en el nombre del archivo, de otro modo, se sobreescrib
 Dentro de los datos almacenados, es posible encontrar:
 
 ●      Información sobre el procesador.
+
 ●      Nombre del sistema operativo.
+
 ●      Versión del sistema operativo.
+
 ●      Listado de procesos corriendo.
+
 ●      Usuarios con una sesión abierta en el sistema.
+
 ●      IP del host en el que se ejecuta.  
 
 Para correrla es necesario:
@@ -66,12 +71,15 @@ NOTA: En la carpeta venv se subieron las librerías necesarias para poder ejecut
 Dockerizacion de compliance api
 
 -Generar imagen del contanedor
+
 sudo docker build -t compliance-api:latest .
 
 -Correr el contenedor de docker
-docker run -d --name api -p 5000:5000 compliance-api
+
+sudo docker run -d --name api -p 5000:5000 compliance-api
 
 -se expone el host 0.0.0.0:5000 para accederlo desde el host anfitrion
+
   http://0.0.0.0:5000/api/v1/compliance/system_info
   
 
